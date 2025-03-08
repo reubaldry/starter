@@ -24,9 +24,19 @@ vim.opt.cursorline = true -- Keep CursorLine enabled
 vim.api.nvim_set_hl(0, "Cursor2", { fg = "#282828", bg = "#FB4934" }) -- Gruvbox Red for Insert Mode
 
 -- Set custom cursor styles
--- vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor50"
+--else vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor50"
 
 -- vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor50"
 vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor50"
 
 vim.api.nvim_set_hl(0, "lCursor", { bg = "#FABD2F" }) -- Ensure lCursor is properly set
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.api.nvim_set_hl(0, "Normal", { fg = "#EBDBB2", bg = "#282828" }) -- Gruvbox Default
+  end,
+})
+
+vim.o.wrap = true
+
+vim.keymap.set("n", "<leader>lvv", ":VimtexView<CR>", { silent = true })
